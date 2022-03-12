@@ -30,6 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   get_storage:
+  google_maps_flutter:
   get:
 
 

@@ -23,9 +23,7 @@ class HomePage extends GetView<BottomTabController> {
           ],
         ),
         body: SafeArea(
-          child: Container(
-            child: controller.currentPage,
-          ),
+          child: controller.currentPage,
         ),
       ),
     );
