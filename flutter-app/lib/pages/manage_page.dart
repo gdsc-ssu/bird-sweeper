@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class ManagePage extends StatefulWidget {
@@ -53,10 +54,10 @@ class _ManagePageState extends State<ManagePage> {
                       controller: scrollController,
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) => Material(
+                      itemBuilder: (context, idx) => Material(
                         color: Colors.white,
                         child: InkWell(
-                          onTap: () => print("hello"),
+                          onTap: () => Get.toNamed("/detail/$idx"),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 16),

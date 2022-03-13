@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/controllers/bottomtab_controller.dart';
+import 'package:flutter_app/pages/detail_page.dart';
 import 'package:flutter_app/pages/home_page.dart';
 import 'package:flutter_app/pages/login_page.dart';
 import 'package:get/get.dart';
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
       title: 'bird swreeper',
       getPages: [
         GetPage(name: '/', page: () => const LoginPage()),
-        GetPage(name: '/home', page: () => HomePage())
+        GetPage(name: '/home', page: () => HomePage()),
+        GetPage(name: '/detail/:idx', page: () => const DetailPage())
       ],
       initialRoute: '/',
     );
