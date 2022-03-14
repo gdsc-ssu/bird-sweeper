@@ -1,11 +1,10 @@
 package com.gdsc.birdsweeper.controller;
 
-import com.gdsc.birdsweeper.domain.User;
 import com.gdsc.birdsweeper.dto.SignUpRequestDTO;
 import com.gdsc.birdsweeper.dto.UserLoginRequestDTO;
 import com.gdsc.birdsweeper.dto.UserLoginResponseDTO;
 import com.gdsc.birdsweeper.dto.UserResponseDTO;
-import com.gdsc.birdsweeper.service.SignService;
+import com.gdsc.birdsweeper.service.SignServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class SignController {
 
-    private final SignService signService;
+    private final SignServiceImpl signService;
 
     @GetMapping(value = "/hello")
     public ResponseEntity<String> helloWorld() {
