@@ -40,5 +40,5 @@ public class User implements Serializable {
 
     @CreationTimestamp
     @Column(nullable = false, length = 20, updatable = false)
-    private LocalDateTime cratedAt;
+    private LocalDateTime createdDate;
 }
