@@ -49,7 +49,7 @@ public class JwtTokenProvider {
 
     public String getUsername(String token) {
         try {
-            return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
+            return (String) Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().get("username");
         } catch(ExpiredJwtException e) {
             return e.getClaims().getSubject();
         }
