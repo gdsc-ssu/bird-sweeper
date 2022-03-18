@@ -1,46 +1,46 @@
 create table user (
     username varchar(32) not null,
-    created_date datetime not null,
-    email varchar(64),
     name varchar(64) not null,
-    password varchar(255) not null,
+    team varchar(64),
+    email varchar(64),
     phone varchar(64),
     role varchar(32) not null,
-    team varchar(64),
+    password varchar(255) not null,
+    created_date datetime not null,
     primary key (username)
 ) engine=InnoDB;
 
 create table dispenser (
     id bigint not null auto_increment,
     code varchar(64) not null,
-    created_date datetime not null,
-    created_username varchar(32),
-    feed_cnt integer,
+    status varchar(32) not null,
     latitude varchar(64) not null,
     location varchar(128),
     longitude varchar(64) not null,
-    status integer not null,
+    feed_cnt integer,
+    created_date datetime not null,
+    created_username varchar(32),
     updated_date datetime,
     primary key (id)
 ) engine=InnoDB;
 
 create table dispenser_status_hist (
     id bigint not null auto_increment,
-    created_date datetime not null,
-    feed_percent integer,
-    motion_status integer,
-    motor_status integer,
-    trash_percent integer,
-    version integer not null,
     dispenser_id bigint,
+    version integer not null,
+    feed_percent integer,
+    trash_percent integer,
+    motion_status varchar(32),
+    motor_status varchar(32),
+    created_date datetime not null,
     primary key (id)
 ) engine=InnoDB;
 
 create table user_dispenser (
     id bigint not null auto_increment,
-    created_date datetime not null,
-    dispenser_id bigint,
     username varchar(32),
+    dispenser_id bigint,
+    created_date datetime not null,
     primary key (id)
 ) engine=InnoDB;
 
