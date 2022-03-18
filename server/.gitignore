@@ -26,3 +26,4 @@ out/
 
 ## ETC ##
 application-auth.properties
+application-prod.properties
