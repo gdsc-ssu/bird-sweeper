@@ -28,7 +28,7 @@ public class SignController {
         return new ResponseEntity<UserResponseDTO>(signService.signUp(signUpRequestDTO), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/login")
+    @PostMapping(value = "/login")
     public ResponseEntity<UserLoginResponseDTO> login(
             @RequestBody final UserLoginRequestDTO userLoginRequestDTO) {
         return new ResponseEntity<UserLoginResponseDTO>(signService.login(userLoginRequestDTO), HttpStatus.OK);
