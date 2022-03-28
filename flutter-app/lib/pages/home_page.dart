@@ -17,9 +17,12 @@ class HomePage extends GetView<BottomTabController> {
             controller.changePage(value);
           },
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.abc), label: "Manage"),
-            BottomNavigationBarItem(icon: Icon(Icons.abc), label: "Report"),
-            BottomNavigationBarItem(icon: Icon(Icons.abc), label: "Profile")
+            BottomNavigationBarItem(
+                icon: Icon(Icons.map_outlined), label: "Manage"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.receipt_long_sharp), label: "Report"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.supervised_user_circle), label: "Profile")
           ],
         ),
         body: SafeArea(

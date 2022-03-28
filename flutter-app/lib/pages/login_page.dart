@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
 import '../colors.dart';
+import '../controllers/dispenser_controller.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -11,11 +15,15 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _formKey = GlobalKey<FormState>();
+  String _id = "", _pw = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           height: double.infinity,
           child: Column(
             children: [
@@ -35,6 +43,7 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Form(
+                  key: _formKey,
                   child: Column(
                     children: [
                       Container(
@@ -43,6 +52,13 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       SizedBox(height: 8),
                       TextFormField(
+                          onSaved: (id) => _id = id ?? "",
+                          validator: (id) {
+                            if ((id ?? "").isEmpty) {
+                              return '아이디를 입력하세요.';
+                            }
+                            return null;
+                          },
                           obscureText: true,
                           decoration: InputDecoration(
                               hintText: "ID",
@@ -56,6 +72,13 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       SizedBox(height: 8),
                       TextFormField(
+                          validator: (pw) {
+                            if ((pw ?? "").isEmpty) {
+                              return '비밀번호를 입력하세요.';
+                            }
+                            return null;
+                          },
+                          onSaved: (name) => _pw = name ?? "",
                           obscureText: true,
                           decoration: InputDecoration(
                               hintText: "Password",
@@ -69,12 +92,28 @@ class _LoginPageState extends State<LoginPage> {
               Expanded(child: SizedBox.shrink()),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Container(
+                child: SizedBox(
                   height: 50,
                   width: double.infinity,
                   child: ElevatedButton(
-                      onPressed: () {
-                        Get.toNamed("/home");
+                      onPressed: () async {
+                        if (_formKey.currentState?.validate() ?? false) {
+                          _formKey.currentState?.save();
+                          print("$_id $_pw");
+                          // await http.get(Uri.parse(
+                          //     'http://34.64.122.168:8080/api/sign/login'));
+                          final data = await http.get(
+                              Uri.parse(
+                                  'http://34.64.122.168:8080/api/dispenser'),
+                              headers: {
+                                "X-AUTH-TOKEN":
+                                    "eyJyZWdEYXRlIjoxNjQ3MjcyMzE0ODU1LCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwiZXhwIjoxNjQ5ODY0MzE0LCJ1c2VybmFtZSI6InRlc3QxIn0.Wh0DHofceOg-xFXCDrTSHcTwtKTw_-fZwUNMt1FoKuk"
+                              });
+                          DispenserController.to.dispenserList.value =
+                              json.decode(utf8.decode(data.bodyBytes));
+                          Get.toNamed("/home");
+                          // http.
+                        }
                       },
                       child: Text("Login"),
                       style: ButtonStyle(
