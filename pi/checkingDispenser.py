@@ -86,7 +86,7 @@ def main():
             continue
         #ECHO로 인식 종료 시점까지 대기
         timeout = time.time()
-        while GPIO.input(ECHO) == 1:
+        while GPIO.input(ECHO):
             #종료 시간 변수에 저장
             pulse_end = time.time()
             if ((pulse_end - pulse_start)*1000000) >= MAX_DURATION_TIMEOUT:
