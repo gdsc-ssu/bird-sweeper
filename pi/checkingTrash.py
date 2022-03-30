@@ -35,10 +35,12 @@ def distanceInCm(duration):
 
 # 거리 표시
 def print_distance(distance):
-    if distance == 0:
-        distanceMsg = 'Distance : out of range                   \r'
-    else:
-        distanceMsg = 'Distance : ' + str(distance) + 'cm' + '        \r'
+    # if distance == 0:
+    #     distanceMsg = 'Distance : out of range                   \r'
+    # else:
+    #     distanceMsg = 'Distance : ' + str(distance) + 'cm' + '        \r'
+    #삼항 연산자로 교체
+    distanceMsg = 'Distance : out of range                   \r' if distance  == 0 else 'Distance : ' + str(distance) + 'cm' + '        \r'
     sys.stdout.write(distanceMsg)
     sys.stdout.flush()
 
@@ -71,7 +73,7 @@ def main():
 
         # ECHO로 신호가 들어 올때까지 대기
         timeout = time.time()
-        while GPIO.input(ECHO) == 0:
+        while not GPIO.input(ECHO):
             #들어왔으면 시작 시간을 변수에 저장
             pulse_start = time.time()
             if ((pulse_start - timeout)*1000000) >= MAX_DURATION_TIMEOUT:

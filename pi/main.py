@@ -89,11 +89,9 @@ def main():
     a = 0
     while True:
         if time.localtime().tm_min <= 0: #분이 0일때 즉 정각일 때마다 상태를 업데이트 하는 호출을 보낸다
-            sendData()
-        else:   #아닌경우 그냥 넘어간다
-            pass
+            sendData()    
+            
         #촬영 시작 후 이미지 저장
-
         ret, frame = cap.read()
         cv2.imwrite('./image/image%s.jpg' %a, frame)
         

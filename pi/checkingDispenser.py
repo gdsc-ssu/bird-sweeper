@@ -72,7 +72,7 @@ def main():
 
         # ECHO로 신호가 들어 올때까지 대기
         timeout = time.time()
-        while GPIO.input(ECHO) == 0:
+        while not GPIO.input(ECHO):
             #들어왔으면 시작 시간을 변수에 저장
             pulse_start = time.time()
             if ((pulse_start - timeout)*1000000) >= MAX_DURATION_TIMEOUT:
