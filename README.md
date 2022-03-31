@@ -35,7 +35,7 @@ Usually, when birds bring garbage, it acts as a mechanism to feed and transmit r
 
 1. **Machine learning recognizes birds**
 
-   Recognize ****birds through camera connected to Raspberry Pi. The camera is mounted at the top of the dispenser, allowing efficient bird recognition through a wide viewing angle. We controls the camera, takes pictures every 5 seconds by using OpenCV, and analyzes them through machine learning. We use Google's **`Google Cloud Vison`** because the analysis process needs to be fast and accurate. We use Python to load `Google Cloud Vison SDK` and analyze the photos. Based on the results returned by Google Cloud Vison, we will move on to the next step. 
+   Recognize ****birds through camera connected to Raspberry Pi. The camera is mounted at the top of the dispenser, allowing efficient bird recognition through a wide viewing angle. We controls the camera, takes pictures every 5 seconds by using OpenCV, and analyzes them through machine learning. We use Google's `Google Cloud Vison` because the analysis process needs to be fast and accurate. We use Python to load `Google Cloud Vison SDK` and analyze the photos. Based on the results returned by Google Cloud Vison, we will move on to the next step. 
 
 2. **Garbage recognizing Machine learning**
 
@@ -51,7 +51,7 @@ Usually, when birds bring garbage, it acts as a mechanism to feed and transmit r
 
 5. **Sensor-controlled residual food**
 
-   Now, To  control the state of dispenser remotely,  measure data of the remaining food and garbage tank. We use ultrasonic sensors  to measure. We use the ultrasonic sensors to determine the height of the food tank and the trash can  determine how much it is. Then, **the results will be sent to the server.**
+   Now, To  control the state of dispenser remotely,  measure data of the remaining food and garbage tank. We use ultrasonic sensors  to measure. We use the ultrasonic sensors to determine the height of the food tank and the trash can  determine how much it is. Then, the results will be sent to the server.
 
 ### Software Architecture
 
